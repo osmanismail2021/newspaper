@@ -1,7 +1,7 @@
 import { React, useContext } from 'react';
 import { Database } from '../components/context/index';
 import News from './News';
-
+import "./home.css"
 
 export default function Home() {
 
@@ -23,10 +23,17 @@ export default function Home() {
              />   
             )
       })} */}
-      {
+    
+     <div className="news">
+     {
         articles.length !== 0 ? articles.map((news,index)=><News data={news}/>):'yok'
       }
-      {console.log(articles)}
+     </div>
+     <div className="weather">
+     {
+        articles.length !== 0 ? articles.map((weather,index)=><News data={weather}/>):'yok'
+      }
+     </div>
     </>
   )
 }

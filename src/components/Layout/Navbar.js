@@ -4,7 +4,9 @@ import { BsCloudSun } from "react-icons/bs";
 import { GiBelgium } from "react-icons/gi";
 import { BiWorld } from "react-icons/bi";
 import { BiSearchAlt } from "react-icons/bi";
-import "./navbar.css"
+import { MdOutlineSportsSoccer } from "react-icons/md"
+import { GiTrafficLightsReadyToGo } from "react-icons/gi"
+import "./style/navbar.css"
 
 export default function Navbar() {
   return (
@@ -30,6 +32,18 @@ export default function Navbar() {
           <BsCloudSun/>
           
         </Link>
+        <Link className='icon' to="/sportnews">
+          
+        <span>Sport News</span>
+          <MdOutlineSportsSoccer/>
+          
+        </Link>
+        <Link className='icon' to="/trafficnews">
+          
+          <span>Traffic News</span>
+            <GiTrafficLightsReadyToGo/>
+            
+          </Link>
       </div>
 
       <div className='searchBar'>

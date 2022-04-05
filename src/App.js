@@ -6,6 +6,8 @@ import './App.css';
 import Belgiumnews from "./components/Belgiumnews";
 import Worldnews from "./components/Worldnews";
 import Weathernews from "./components/Weathernews";
+import Sportnews from "./components/Sportnews";
+import Trafficnews from "./components/Trafficnews";
 import { Database } from './components/context/index';
 import { React, useState, useEffect } from 'react';
 
@@ -16,14 +18,19 @@ export default function App() {
   
   const [articles, setArticles] = useState([])
 
+
   useEffect(() => {
    const fetchIt = async ()=>{
     await fetch('https://newsapi.org/v2/everything?q=news&apiKey=a85abafdd40249398d40a7794a9506a1')
       .then(res => res.json())
       .then(data => {
         setArticles(data.articles)
+
       })
    }
+   
+
+   
 
    fetchIt()
   }, [])
@@ -37,6 +44,8 @@ export default function App() {
             <Route path="/belgiumnews" element={<Belgiumnews />} />
             <Route path="/worldnews" element={<Worldnews />} />
             <Route path="/weathernews" element={<Weathernews />} />
+            <Route path="/sportnews" element={<Sportnews />} />
+            <Route path="/trafficnews" element={<Trafficnews />} />
 
           </Routes>
           <Footer />
