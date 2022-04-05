@@ -53,3 +53,7 @@ export default function Navbar() {
     </nav>
   )
 }
+
+/*
+https://medium.com/@pradityadhitama/simple-search-bar-component-functionality-in-react-6589fda3385d
+*/
