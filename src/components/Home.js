@@ -29,11 +29,7 @@ export default function Home() {
         articles.length !== 0 ? articles.map((news,index)=><News data={news}/>):'yok'
       }
      </div>
-     <div className="weather">
-     {
-        articles.length !== 0 ? articles.map((weather,index)=><News data={weather}/>):'yok'
-      }
-     </div>
+     
     </>
   )
 }
