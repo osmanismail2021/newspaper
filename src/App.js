@@ -8,6 +8,7 @@ import Worldnews from "./components/Worldnews";
 import Weathernews from "./components/Weathernews";
 import Sportnews from "./components/Sportnews";
 import Trafficnews from "./components/Trafficnews";
+import SearchPage from "./components/SearchPage";
 import { Database } from './components/context/index';
 import { React, useState, useEffect } from 'react';
 
@@ -46,6 +47,7 @@ export default function App() {
             <Route path="/weathernews" element={<Weathernews />} />
             <Route path="/sportnews" element={<Sportnews />} />
             <Route path="/trafficnews" element={<Trafficnews />} />
+            <Route path="/searchpage" element={<SearchPage />} />
 
           </Routes>
           <Footer />

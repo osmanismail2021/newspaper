@@ -7,6 +7,7 @@ import { BiSearchAlt } from "react-icons/bi";
 import { MdOutlineSportsSoccer } from "react-icons/md"
 import { GiTrafficLightsReadyToGo } from "react-icons/gi"
 import "./style/navbar.css"
+import SearchBar from '../SearchBar';
 
 export default function Navbar() {
   return (
@@ -45,11 +46,10 @@ export default function Navbar() {
             
           </Link>
       </div>
-
-      <div className='searchBar'>
-        <input className='inputSearch' type="text" />
+      <SearchBar />
+      <Link className='searchBar' to="searchpage">
         <BiSearchAlt className='searchGlass' />
-      </div>
+      </Link>
     </nav>
   )
 }
