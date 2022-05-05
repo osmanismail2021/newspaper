@@ -1,46 +1,86 @@
-import React, { useState, useEffect } from 'react';
-import SearchBar from './SearchBar';
-import NewsList from './NewsList';
+import { React, useState, useEffect } from 'react';
+import News from './News';
 import { useSearchParams } from 'react-router-dom';
-const SearchPage = (props) => {
-  const [input, setInput] = useState('');
-  const [newsListDefault, setNewsListDefault] = useState();
-  const [newsList, setNewsList] = useState();
+
+
+
+export default function Sportnews() {
+  const [articles, setArticles] = useState([])
   const [searchParams] = useSearchParams();
-  
 
-  const updateInput = async (input) => {
-     const filtered = newsListDefault.filter(news => {
-      return news.name.toLowerCase().includes(input.toLowerCase())
-     })
-     setInput(input);
-     setNewsList(filtered);
-  }
 
-  useEffect( () => {
-    const fetchData = async () => {
-    return await fetch(`https://newsapi.org/v2/everything?q=${searchParams.get('q')}&apiKey=a85abafdd40249398d40a7794a9506a1`)
-      .then(response => response.json())
+  useEffect(() => {
+   const fetchIt = async ()=>{
+    await fetch(`/api/v2/everything?q=${searchParams.get('q')}&apiKey=a85abafdd40249398d40a7794a9506a1`)
+      .then(res => res.json())
       .then(data => {
-         setNewsList(data) 
-         setNewsListDefault(data)
-       });}
-    fetchData()
-    console.log(searchParams.get('q'));
-  },[]);
-	
+        setArticles(data.articles)
+
+      })
+   }
+   
+
+   
+
+   fetchIt()
+  })
+
+  
+  
   return (
-    <>
-      <h1>News List</h1>
-      {/* <SearchBar 
-       input={input} 
-       onChange={updateInput}
-      />
-      <NewsList newsList={newsList}/> */}
-      <NewsList data={newsList}/>
-    
-    </>
-   );
+          <div className="news">
+     {
+        articles.length !== 0 ? articles.map((news,index)=><News  key={index} data={news}/>):'no news found'
+      }
+     </div>
+  )
 }
 
-export default SearchPage
+
+
+// import React, { useState, useEffect } from 'react';
+// import SearchBar from './SearchBar';
+// import NewsList from './NewsList';
+// import { useSearchParams } from 'react-router-dom';
+// const SearchPage = (props) => {
+//   const [input, setInput] = useState('');
+//   const [newsListDefault, setNewsListDefault] = useState();
+//   const [newsList, setNewsList] = useState([]);
+//   const [searchParams] = useSearchParams();
+
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       return await fetch(`https://newsapi.org/v2/everything?q=${searchParams.get('q')}&apiKey=a85abafdd40249398d40a7794a9506a1`)
+//         .then(response => response.json())
+//         .then(data => {
+//           setNewsList(data.articles);
+          
+//         });
+//     }
+//     fetchData()
+//     console.log(searchParams.get('q'));
+//   }, []);
+
+//   return (
+//     <>
+//       <h1>News List</h1>
+//       {console.log(newsList)}
+//       <div className='searchList'>
+//       {
+//         newsList.length !==0 ?
+//         newsList.map((news, index) => {
+//           return (
+//             <NewsList key={index} news={news} />
+//           )
+//         })
+//         :
+//         'No news found'
+//       }
+//       </div> 
+//     </>
+//   );
+// }
+
+// export default SearchPage
+

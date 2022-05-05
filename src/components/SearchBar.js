@@ -1,14 +1,15 @@
 import React from 'react';
 
-const SearchBar = ({keyword,setKeyword}) => {
+const SearchBar = ({keyword,keywordHandler}) => {
  
   return (
     <input 
      
      key="random1"
-     value={keyword}
+     className='inputSearch'
+    
      placeholder={"search news"}
-     onChange={(e) => setKeyword(e.target.value)}
+     onChange={(e) => keywordHandler(e.target.value)}
     />
   );
 }

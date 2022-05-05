@@ -1,4 +1,4 @@
-import { BrowserRouter, BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import {  BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Navbar from "./components/Layout/Navbar";
 import Home from "./components/Home"
 import Footer from "./components/Layout/Footer";
@@ -22,7 +22,7 @@ export default function App() {
 
   useEffect(() => {
    const fetchIt = async ()=>{
-    await fetch('https://newsapi.org/v2/everything?q=news&apiKey=a85abafdd40249398d40a7794a9506a1')
+    await fetch('/api/v2/everything?q=news&apiKey=a85abafdd40249398d40a7794a9506a1')
       .then(res => res.json())
       .then(data => {
         setArticles(data.articles)
@@ -37,7 +37,7 @@ export default function App() {
   }, [])
   return (
     <Database.Provider value={articles}>
-      <BrowserRouter>
+      <Router>
         
           <Navbar />
           <Routes>
@@ -52,7 +52,7 @@ export default function App() {
           </Routes>
           <Footer />
 
-      </BrowserRouter>
+      </Router>
     </Database.Provider>
 
 
